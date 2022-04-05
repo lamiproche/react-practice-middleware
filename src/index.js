@@ -6,11 +6,12 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import rootReducer from "./modules";
-import myLogger from "./middlewares/MyLogger";
+import { logger } from "redux-logger/src";
+import ReduxThunk from "redux-thunk";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
-const store = createStore(rootReducer, applyMiddleware(myLogger));
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk, logger));
 
 root.render(
   <StrictMode>
